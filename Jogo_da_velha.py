@@ -22,7 +22,6 @@ btn_9 = tk.Button(text='9', width=5, relief=tk.GROOVE, borderwidth=2, bg='white'
 
 # Posicionar os botões na tela
 btn_1.grid(row=1, column=0)
-btn_1.config
 print(btn_1.winfo_x())
 print(btn_1.winfo_y())
 
