@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 import tkinter.font as font
 
-flag = 0
+flag = cont_vitorias_X = cont_vitorias_O = 0
 
 # Configurações da janela principal
 janela_principal = tk.Tk()
@@ -25,86 +25,109 @@ def desativar_botoes():
 
 # Verificar o Vencedor
 def Vencedor():
+    global cont_vitorias_X, cont_vitorias_O
     if btn_1['text'] == 'X' and btn_2['text'] == 'X' and btn_3['text'] == 'X':
         btn_1['background'] = 'red'
         btn_2['background'] = 'red'
         btn_3['background'] = 'red'
+        cont_vitorias_X += 1
         desativar_botoes()
     elif btn_1['text'] == 'O' and btn_2['text'] == 'O' and btn_3['text'] == 'O':
         btn_1['background'] = 'red'
         btn_2['background'] = 'red'
         btn_3['background'] = 'red'
+        cont_vitorias_O += 1
         desativar_botoes()
     elif btn_1['text'] == 'X' and btn_4['text'] == 'X' and btn_7['text'] == 'X':
         btn_1['background'] = 'red'
         btn_4['background'] = 'red'
         btn_7['background'] = 'red'
+        cont_vitorias_X += 1
         desativar_botoes()
     elif btn_1['text'] == 'O' and btn_4['text'] == 'O' and btn_7['text'] == 'O':
         btn_1['background'] = 'red'
         btn_4['background'] = 'red'
         btn_7['background'] = 'red'
+        cont_vitorias_O += 1
         desativar_botoes()
     elif btn_3['text'] == 'X' and btn_6['text'] == 'X' and btn_9['text'] == 'X':
         btn_3['background'] = 'red'
         btn_6['background'] = 'red'
         btn_9['background'] = 'red'
+        cont_vitorias_X += 1
         desativar_botoes()
     elif btn_3['text'] == 'O' and btn_6['text'] == 'O' and btn_9['text'] == 'O':
         btn_3['background'] = 'red'
         btn_6['background'] = 'red'
         btn_9['background'] = 'red'
+        cont_vitorias_O += 1
         desativar_botoes()
     elif btn_7['text'] == 'X' and btn_8['text'] == 'X' and btn_9['text'] == 'X':
         btn_7['background'] = 'red'
         btn_8['background'] = 'red'
         btn_9['background'] = 'red'
+        cont_vitorias_X += 1
         desativar_botoes()
     elif btn_7['text'] == 'O' and btn_8['text'] == 'O' and btn_9['text'] == 'O':
         btn_7['background'] = 'red'
         btn_8['background'] = 'red'
         btn_9['background'] = 'red'
+        cont_vitorias_O += 1
         desativar_botoes()
     elif btn_4['text'] == 'X' and btn_5['text'] == 'X' and btn_6['text'] == 'X':
         btn_4['background'] = 'red'
         btn_5['background'] = 'red'
         btn_6['background'] = 'red'
+        cont_vitorias_X += 1
         desativar_botoes()
     elif btn_4['text'] == 'O' and btn_5['text'] == 'O' and btn_6['text'] == 'O':
         btn_4['background'] = 'red'
         btn_5['background'] = 'red'
         btn_6['background'] = 'red'
+        cont_vitorias_O += 1
         desativar_botoes()
     elif btn_1['text'] == 'X' and btn_5['text'] == 'X' and btn_9['text'] == 'X':
         btn_1['background'] = 'red'
         btn_5['background'] = 'red'
         btn_9['background'] = 'red'
+        cont_vitorias_X += 1
         desativar_botoes()
     elif btn_1['text'] == 'O' and btn_5['text'] == 'O' and btn_9['text'] == 'O':
         btn_1['background'] = 'red'
         btn_5['background'] = 'red'
         btn_9['background'] = 'red'
+        cont_vitorias_O += 1
         desativar_botoes()
     elif btn_3['text'] == 'X' and btn_5['text'] == 'X' and btn_7['text'] == 'X':
         btn_3['background'] = 'red'
         btn_5['background'] = 'red'
         btn_7['background'] = 'red'
+        cont_vitorias_X += 1
         desativar_botoes()
     elif btn_3['text'] == 'O' and btn_5['text'] == 'O' and btn_7['text'] == 'O':
         btn_3['background'] = 'red'
         btn_5['background'] = 'red'
         btn_7['background'] = 'red'
+        cont_vitorias_O += 1
         desativar_botoes()
     elif btn_2['text'] == 'X' and btn_5['text'] == 'X' and btn_8['text'] == 'X':
         btn_2['background'] = 'red'
         btn_5['background'] = 'red'
         btn_8['background'] = 'red'
+        cont_vitorias_X += 1
         desativar_botoes()
     elif btn_2['text'] == 'O' and btn_5['text'] == 'O' and btn_8['text'] == 'O':
         btn_2['background'] = 'red'
         btn_5['background'] = 'red'
         btn_8['background'] = 'red'
+        cont_vitorias_O += 1
         desativar_botoes()
+    # Pontuação X
+    vitoriasX = tk.Label(text=f'X: {cont_vitorias_X}', font=15)
+    vitoriasX.grid(row=3, column=0)
+    # Pontuação Y
+    vitoriasO = tk.Label(text=f'O: {cont_vitorias_O}', font=15)
+    vitoriasO.grid(row=3, column=2)
 
 
 # Colocar o texto nos botões X ou O e mostrar mensagem de erro casa pressione no mesmo sítio mais de uma vez
@@ -148,10 +171,11 @@ def reset_game():
     btn_8.grid(row=2, column=1)
     btn_9.grid(row=2, column=2)
 
-    x = tk.Text()
 
-
-botao_reset = tk.Button(text='Reiniciar o Jogo', command=lambda: reset_game())
-botao_reset.grid(row=4, column=1)
+# Botão para reiniciar o jogo
+botao_reset = tk.Button(text='Reiniciar o Jogo', font=15, command=lambda: reset_game())
+botao_reset.grid(row=3, column=1)
+print(cont_vitorias_O)
 reset_game()
+
 janela_principal.mainloop()
